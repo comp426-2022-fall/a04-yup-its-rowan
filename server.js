@@ -1,6 +1,6 @@
 import {roll} from "./lib/roll.js";
 import minimist from "minimist";
-import express  from "express";
+import express, { application }  from "express";
 
 let args = minimist(process.argv.slice(2));
 let expressApp = express();
@@ -26,3 +26,9 @@ expressApp.post("/app/roll", (req, res) => {
     let result = roll(parseInt(req.body.sides), parseInt(req.body.dice), parseInt(req.body.rolls));
     res.status(200).send(JSON.stringify(result)); 
 });
+
+//do the 404 last to get rid of the autograder error
+
+expressApp.get("*", (req, res) => {
+    res.status(404).send("404 NOT FOUND");
+}   );
