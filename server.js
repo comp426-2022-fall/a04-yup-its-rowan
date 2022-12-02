@@ -14,7 +14,7 @@ expressApp.get("/app", (req, res) => { //get request
   res.status(200).send("200 OK"); //send 200 OK for the first thing
 });
 
-expressApp.get("/app/roll", (req, res) => {
+expressApp.get("/app/roll", (req, res) => { //default section
     let result = roll(6, 2, 1); 
     res.status(200).send(JSON.stringify(result)); //send the result
 });
@@ -22,22 +22,22 @@ expressApp.get("/app/roll", (req, res) => {
 
     //now for some of the harder ones 
 
-expressApp.post("/app/roll", (req, res) => {
+expressApp.post("/app/roll", (req, res) => { //if given a post with a json body
     let result = roll(parseInt(req.body.sides), parseInt(req.body.dice), parseInt(req.body.rolls));
     res.status(200).send(JSON.stringify(result)); 
 });
 
-expressApp.get("/app/roll/:sides", (req, res) => {
+expressApp.get("/app/roll/:sides", (req, res) => { //if only sides
     let result = roll(parseInt(req.params.sides), 2, 1);
     res.status(200).send(JSON.stringify(result));
 });
 
-expressApp.get("/app/roll/:sides/:dice", (req, res) => {
+expressApp.get("/app/roll/:sides/:dice", (req, res) => { //if only sides and dice
     let result = roll(parseInt(req.params.sides), parseInt(req.params.dice), 1);
     res.status(200).send(JSON.stringify(result));
 });
 
-expressApp.get("/app/roll/:sides/:dice/:rolls", (req, res) => {
+expressApp.get("/app/roll/:sides/:dice/:rolls", (req, res) => { //if all three
     let result = roll(parseInt(req.params.sides), parseInt(req.params.dice), parseInt(req.params.rolls));
     res.status(200).send(JSON.stringify(result));
 });
