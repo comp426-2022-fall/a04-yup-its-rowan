@@ -1,6 +1,6 @@
 import {roll} from "./lib/roll.js";
 import minimist from "minimist";
-import { application, express } from "express";
+import express  from "express";
 
 let args = minimist(process.argv.slice(2));
 let expressApp = express();
