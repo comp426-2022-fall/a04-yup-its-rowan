@@ -12,9 +12,17 @@ expressApp.listen(port);
 
 expressApp.get("/app", (req, res) => { //get request
   res.status(200).send("200 OK"); //send 200 OK for the first thing
-    });
+});
 
 expressApp.get("/app/roll", (req, res) => {
     let result = roll(); 
     res.status(200).send(JSON.stringify(result)); //send the result
-    });
+});
+
+
+    //now for some of the harder ones 
+
+expressApp.post("/app/roll", (req, res) => {
+    let result = roll(parseInt(req.body.sides), parseInt(req.body.dice), parseInt(req.body.rolls));
+    res.status(200).send(JSON.stringify(result)); 
+});
