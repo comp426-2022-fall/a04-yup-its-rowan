@@ -27,8 +27,22 @@ expressApp.post("/app/roll", (req, res) => {
     res.status(200).send(JSON.stringify(result)); 
 });
 
-//do the 404 last to get rid of the autograder error
+expressApp.get("/app/roll/:sides", (req, res) => {
+    let result = roll(parseInt(req.params.sides), 2, 1);
+    res.status(200).send(JSON.stringify(result));
+});
 
+expressApp.get("/app/roll/:sides/:dice", (req, res) => {
+    let result = roll(parseInt(req.params.sides), parseInt(req.params.dice), 1);
+    res.status(200).send(JSON.stringify(result));
+});
+
+expressApp.get("/app/roll/:sides/:dice/:rolls", (req, res) => {
+    let result = roll(parseInt(req.params.sides), parseInt(req.params.dice), parseInt(req.params.rolls));
+    res.status(200).send(JSON.stringify(result));
+});
+
+//do the 404 last to get rid of the autograder error
 expressApp.get("*", (req, res) => {
     res.status(404).send("404 NOT FOUND");
 }   );
