@@ -7,7 +7,7 @@ let expressApp = express();
 
 var port = args.port || 5000; //either the port or 5000
 
-expressApp.use(Express.urlencoded({ extended: true })); //extending to url encoded or json doesn't matter and then listen
+expressApp.use(express.urlencoded({ extended: true })); //extending to url encoded or json doesn't matter and then listen
 expressApp.listen(port);
 
 expressApp.get("/app", (req, res) => { //get request
