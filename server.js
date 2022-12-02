@@ -15,7 +15,7 @@ expressApp.get("/app", (req, res) => { //get request
 });
 
 expressApp.get("/app/roll", (req, res) => {
-    let result = roll(); 
+    let result = roll(6, 2, 1); 
     res.status(200).send(JSON.stringify(result)); //send the result
 });
 
